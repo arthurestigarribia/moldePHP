@@ -3,18 +3,18 @@
 
     $id = $_GET['id'];
 
-    $c = mysqli_connect('localhost', 'root', '', 'moldephp') or die('Erro no banco de dados.');
+    $c = mysqli_connect('localhost', 'root', '', 'moldephp') or die('Não foi possível se conectar ao banco de dados.');
 
     $q = mysqli_query($c, "DELETE FROM usuarios WHERE id = $id");
 
     if ($q) {
         session_destroy();
 
-        echo "<div class='alert alert-success' role='alert'>Registro excluído com sucesso.</div>";
+        echo "Registro excluído com sucesso.";
         mysqli_close($c);
 
         header('Location: inicio.php');
     } else {
-        echo "<div class='alert alert-danger' role='alert'>Registro não excluído.</div>";
+        echo "Erro ao excluir usuário.";
     }
 ?>
